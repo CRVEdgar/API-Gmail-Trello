@@ -52,9 +52,7 @@ public class SendMailService {
         helper.setTo(mail.getDestinatario());
         helper.setSubject(mail.getTitulo());
 
-        String conteudo = "Deus, Obrigado por este email estar fucionado!!! AMEM AMEM AMEM" + mail.getId(); //remover id
-
-        helper.setText(mail.getCorpo(), true); //TODO false
+        helper.setText(mail.getCorpo(), true);
 
         factorMail.send(message);
         System.out.println("AMEM, EMAIL ENVIADO - VERIFICAR CX DE ENTRADA: \n " + mail.getCorpo());
