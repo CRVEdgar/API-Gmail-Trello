@@ -4,7 +4,6 @@ import com.example.sendmail.controller.assemblerConvert.MailConvertAssembler;
 import com.example.sendmail.controller.assemblerConvert.MailConvertDISAssembler;
 import com.example.sendmail.controller.dto.DtoMail;
 import com.example.sendmail.controller.input.MailInput;
-import com.example.sendmail.model.Mail;
 import com.example.sendmail.service.SendMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
