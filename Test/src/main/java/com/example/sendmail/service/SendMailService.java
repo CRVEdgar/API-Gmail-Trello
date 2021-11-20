@@ -37,7 +37,7 @@ public class SendMailService {
         factorMail.setHost("smtp.gmail.com");
         factorMail.setPort(587);
         factorMail.setUsername("crvedgartest@gmail.com");
-        factorMail.setPassword("test@2021"); // TODO senha real
+        factorMail.setPassword("pcpqzzntzuwndcpw"); // TODO senha real
 
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.auth", "true");
@@ -48,14 +48,15 @@ public class SendMailService {
         MimeMessage message = factorMail.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom("crvedgartest@gmail.com", "Teste Set From");
+        helper.setFrom(mail.getRemetente(), "Edgar-Test");
         helper.setTo(mail.getDestinatario());
-        helper.setSubject("Obrigado! Email enviado com sucesso!!!!!!!");
+        helper.setSubject(mail.getTitulo());
 
         String conteudo = "Deus, Obrigado por este email estar fucionado!!! AMEM AMEM AMEM" + mail.getId(); //remover id
 
-        //helper.setText(conteudo, true); //TODO false
+        helper.setText(mail.getCorpo(), true); //TODO false
 
+        factorMail.send(message);
         System.out.println("AMEM, EMAIL ENVIADO - VERIFICAR CX DE ENTRADA: \n " + mail.getCorpo());
         //TODO inserir no logger
     }
