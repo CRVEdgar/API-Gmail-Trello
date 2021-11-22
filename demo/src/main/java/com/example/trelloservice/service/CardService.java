@@ -1,10 +1,14 @@
 package com.example.trelloservice.service;
 
+import com.example.trelloservice.controller.input.CardInput;
+import com.example.trelloservice.exception.ServiceExceptionCard;
 import com.example.trelloservice.model.Card;
 import com.example.trelloservice.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CardService {
@@ -13,17 +17,17 @@ public class CardService {
     private CardRepository repository;
 
     @Transactional
-    public Card criar(Card cardInput){
+    public Card save(Card cardInput){
         return repository.save(cardInput);
     }
 
-    public Card buscarPorNomeOuId(Long id, String descricao){
-//        if(){
-//
-//        }else if(){
-//
-//        }
+    public Card buscarPorId(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new ServiceExceptionCard("Card com id informado Inexistente"));
 
-        return null;
+    }
+
+    public List<Card> buscarPorTitulo(String titulo){
+        return repository.findAllByTituloContainingIgnoreCase(titulo);
     }
 }

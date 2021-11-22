@@ -14,5 +14,5 @@ public class Card {
     private Long id;
 
     private String descricao;
-    private String Titulo;
+    private String titulo;
 }
