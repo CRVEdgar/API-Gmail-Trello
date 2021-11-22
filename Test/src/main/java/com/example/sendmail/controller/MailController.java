@@ -4,7 +4,6 @@ import com.example.sendmail.controller.assemblerConvert.MailConvertAssembler;
 import com.example.sendmail.controller.assemblerConvert.MailConvertDISAssembler;
 import com.example.sendmail.controller.dto.DtoMail;
 import com.example.sendmail.controller.input.MailInput;
-import com.example.sendmail.model.Mail;
 import com.example.sendmail.service.SendMailService;
 import com.example.sendmail.trelloApiService.model.CardInput;
 import com.example.sendmail.trelloApiService.proxy.TrelloProxy;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/sendmail")
+@RequestMapping("/sendmail-service")
 public class MailController {
 
     @Autowired

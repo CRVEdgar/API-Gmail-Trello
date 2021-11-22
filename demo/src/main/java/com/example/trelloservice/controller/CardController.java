@@ -4,7 +4,6 @@ import com.example.trelloservice.controller.assemblerConvert.CardConvertAssemble
 import com.example.trelloservice.controller.assemblerConvert.CardConvertDISAssembler;
 import com.example.trelloservice.controller.dto.DtoCard;
 import com.example.trelloservice.controller.input.CardInput;
-import com.example.trelloservice.model.Card;
 import com.example.trelloservice.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cards")
+@RequestMapping("/trello-service")
 public class CardController {
 
     //TODO - handler
