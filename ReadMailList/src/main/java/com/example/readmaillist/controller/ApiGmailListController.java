@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiGmailListController {
 
     @Autowired
-    private ListMailRepository repository;
-
-    @Autowired
     private MailListService service;
 
-    @GetMapping()
+    @GetMapping
     public void buscar(@RequestBody MailList mailList){
         Integer quantidadeEmails = mailList.getResultSizeEstimate();
 
