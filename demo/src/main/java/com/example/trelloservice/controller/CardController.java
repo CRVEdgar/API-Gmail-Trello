@@ -38,6 +38,11 @@ public class CardController {
         return cardConvertAssembler.toCollectionDTO(service.buscarPorTitulo(titulo));
     }
 
+    @GetMapping("/buscarTodos")
+    public List<DtoCard> buscarTodos(){
+        return cardConvertAssembler.toCollectionDTO(service.buscarTodos());
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoCard criarCard(@RequestBody CardInput cardInput){

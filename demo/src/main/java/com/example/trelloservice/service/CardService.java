@@ -30,4 +30,8 @@ public class CardService {
     public List<Card> buscarPorTitulo(String titulo){
         return repository.findAllByTituloContainingIgnoreCase(titulo);
     }
+
+    public List<Card> buscarTodos(){
+        return repository.findAll();
+    }
 }
