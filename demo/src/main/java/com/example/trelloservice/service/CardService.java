@@ -21,6 +21,11 @@ public class CardService {
         return repository.save(cardInput);
     }
 
+    @Transactional
+    public void saveAutomatic(Card cardInput){
+        repository.save(cardInput);
+    }
+
     public Card buscarPorId(Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new ServiceExceptionCard("Card com id informado Inexistente"));

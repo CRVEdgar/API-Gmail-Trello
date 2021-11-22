@@ -19,9 +19,9 @@ public class GatewayConfiguration {
                         )
                         .uri("http://httpbin.org:80"))
                 // caminhos de acesso ao loadbalance do Eureka
-                .route(p -> p.path("/cambio-service/**") //NOME DA APP
+                .route(p -> p.path("/cambio-service/**") //TODO - NOME DA APP
                         .uri("lb://cambio-service")) // nome do serviço registrado no Eureka
-                .route(p -> p.path("/book-service/**") //NOME DO APP
+                .route(p -> p.path("/book-service/**") // TODO - NOME DO APP
                         .uri("lb://book-service")) // nome do serviço registrado no Eureka
                 .build();
     }

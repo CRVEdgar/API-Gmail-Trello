@@ -1,0 +1,50 @@
+server:
+  port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    #    configuracao de verificacao de instancia ativa - tempo
+    healthcheck:
+      enabled: true
+      lease:
+        duration: 5
+    instance:
+      leaseRenewalIntervalInSeconds: 1
+      leaseExpirationDurationInSeconds: 2
+#    configurando a quantidade de tentativas de acesso ao servico
+resilience4j:
+  ratelimiter:
+    instances:
+      default:
+        limit-for-period: 2 #quantidade de requisicoes
+        limit-refresh-period: 10s #tempo (dentro de 10s sera rlz apenas 2 requisições
+  bulkhead:
+    instances:
+      default:
+        max-concurrent-calls: 10
+  retry:
+    instances:
+      foo-bar:
+        max-attempts: 5 #quantidade de chamdas ao endpoint
+        wait-duration: 1s #tempo de espera até tentar a proxima requisição
+        enable-exponential-backoff: true #tempo exponencial para tentativa das requisicoes
+spring:
+  application:
+    name: sendmail-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db_cxentrada?useTimezone=true&serverTimezone=UTC
+    username: postgres
+    password: postgres
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      fail-on-empty-beans: false
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect

@@ -17,11 +17,11 @@ public class MailConvertDISAssembler {
     private ModelMapper modelMapper;
 
     //recebe um objeto input e convert para um objeto do modelo de domínio
-    public Mail convert_paraClienteDomain(MailInput mailInput){
+    public Mail convert_paraEmailDomain(MailInput mailInput){
         return modelMapper.map(mailInput, Mail.class);
     }
 
-    public void copy_paraClienteDomain(MailInput mailInput, Mail mail){
+    public void copy_paraMailDomain(MailInput mailInput, Mail mail){
         modelMapper.map(mailInput, mail);
     }
 }

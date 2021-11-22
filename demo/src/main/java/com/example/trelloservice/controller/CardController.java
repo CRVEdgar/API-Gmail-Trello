@@ -52,4 +52,9 @@ public class CardController {
                 ));
     }
 
+    @PostMapping
+    public void criarAutomaticCard(@RequestBody CardInput cardInput){
+        service.saveAutomatic(cardConvertDISAssembler.convert_paraClienteDomain(cardInput));
+    }
+
 }
