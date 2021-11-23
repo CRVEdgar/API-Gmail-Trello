@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("trello-service")
+@RequestMapping("trello-service") //TODO add /
 public class CardController {
 
     //TODO - handler
@@ -52,8 +52,11 @@ public class CardController {
 //    }
 
     @PostMapping
-    public void criarAutomaticCard(String descricao, String titulo){
-        CardInput cardInput = new CardInput(descricao, titulo);
+    public void criarAutomaticCard(@RequestBody CardInput cardInput){
+        //CardInput cardInput = new CardInput(descricao, titulo);
+        System.out.println("***** TITULO: " +cardInput.getTitulo());
+        System.out.println("***** DESCRICAO: " +cardInput.getDescricao());
+
         service.saveAutomatic(cardConvertDISAssembler.convert_paraClienteDomain(cardInput));
     }
 

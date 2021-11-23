@@ -36,7 +36,7 @@ public class MailController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoMail enviar(@RequestBody @Valid MailInput mailInput){
-        salvarCard(mailInput.getTitulo(), mailInput.getCorpo()); //TODO trocar por string
+       // salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
 
         return salvarNoBanco(mailInput);
 //        return mailConvertAssembler
@@ -51,7 +51,7 @@ public class MailController {
                         mailConvertDISAssembler.convert_paraEmailDomain(mailInput)
                 ));
 
-//        salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
+        salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
 
         return emailSalvo;
     }
@@ -64,18 +64,11 @@ public class MailController {
 
         if(tituloMinusculo.contains("trello") || corpoMinusculo.contains("trello")){
             CardInput cardInput = new CardInput(corpo, titulo);
+
+            proxy.criarAutomaticCard(cardInput);
+
             System.out.println("CORPO: " + cardInput.getDescricao());
             System.out.println("CORPO: " + cardInput.getTitulo());
-
-            proxy.criarAutomaticCard(corpo, titulo);
-
-//            var mailVar = mailSend; //TODO Implementar o Enviroment // receber o valor vindo do banco
-//
-//            var card = cardInput; //TODO Implementar o Enviroment no trello-service // receber o valor vindo do serviço
-//
-//            var port = environment.getProperty("local.server.port");
-//
-//            mailVar.setEnvironment("book port: " +port + " || Cambio Port: " + card.getEnviroment());
 
         }
     }

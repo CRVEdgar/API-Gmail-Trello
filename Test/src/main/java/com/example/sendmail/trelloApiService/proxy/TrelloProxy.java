@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(name = "trello-service") //endpoint do cliente/microserviço a ser acessado
 public interface TrelloProxy {
 
-    @PostMapping
-    void criarAutomaticCard(@RequestBody String descricao, @RequestBody String titulo);
+    @PostMapping(value = "trello-service") //TODO sem barra
+    void criarAutomaticCard(@RequestBody CardInput cardInput);
 
 
 }

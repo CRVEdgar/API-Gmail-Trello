@@ -12,17 +12,17 @@ public class GatewayConfiguration {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 
 //        return builder.routes()
-//                .route(p -> p.path("/get") // intercepta o que passa na requisição do tipo especificado e redireciona para:
+//                .route(p -> p.path("/get")
 //                        .filters(
 //                                f -> f.addRequestHeader("NomeCabecalho", "Valor")
 //                                        .addRequestParameter("Parametro", "Valor")
 //                        )
 //                        .uri("http://httpbin.org:80"))
 //                // caminhos de acesso ao loadbalance do Eureka
-//                .route(p -> p.path("/trello-service/**") //TODO - NOME DA APP
-//                        .uri("lb://trello-service")) // nome do serviço registrado no Eureka
-//                .route(p -> p.path("/sendmail-service/**") // TODO - NOME DO APP
-//                        .uri("lb://sendmail-service")) // nome do serviço registrado no Eureka
+//                .route(p -> p.path("/cambio-service/**")
+//                        .uri("lb://cambio-service")) // nome do serviço registrado no Eureka
+//                .route(p -> p.path("/book-service/**")
+//                        .uri("lb://book-service")) // nome do serviço registrado no Eureka
 //                .build();
 //    }
 
@@ -34,9 +34,9 @@ public class GatewayConfiguration {
 //                        )
                 .uri("http://httpbin.org:80"))
             // caminhos de acesso ao loadbalance do Eureka
-            .route(p -> p.path("/trello-service") //TODO - NOME DA APP
+            .route(p -> p.path("/trello-service/**") //TODO - NOME DA APP
                 .uri("lb://trello-service")) // nome do serviço registrado no Eureka
-            .route(p -> p.path("/sendmail-service") // TODO - NOME DO APP
+            .route(p -> p.path("/sendmail-service/**") // TODO - NOME DO APP
                 .uri("lb://sendmail-service")) // nome do serviço registrado no Eureka
             .build();
 }
