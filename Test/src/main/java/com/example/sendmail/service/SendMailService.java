@@ -31,6 +31,11 @@ public class SendMailService {
         return emailSalvo;
     }
 
+    public Integer quantidade(){
+        Integer qtd = Math.toIntExact(repository.count());
+        return qtd;
+    }
+
     private void enviarEmail(Mail mail) throws MessagingException, UnsupportedEncodingException {
         JavaMailSenderImpl factorMail = new JavaMailSenderImpl();
 
