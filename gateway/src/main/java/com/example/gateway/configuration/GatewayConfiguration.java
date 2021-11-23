@@ -34,9 +34,9 @@ public class GatewayConfiguration {
 //                        )
                 .uri("http://httpbin.org:80"))
             // caminhos de acesso ao loadbalance do Eureka
-            .route(p -> p.path("/trello-service/**") //TODO - NOME DA APP
+            .route(p -> p.path("/trello-service") //TODO - NOME DA APP
                 .uri("lb://trello-service")) // nome do serviço registrado no Eureka
-            .route(p -> p.path("/sendmail-service/**") // TODO - NOME DO APP
+            .route(p -> p.path("/sendmail-service") // TODO - NOME DO APP
                 .uri("lb://sendmail-service")) // nome do serviço registrado no Eureka
             .build();
 }

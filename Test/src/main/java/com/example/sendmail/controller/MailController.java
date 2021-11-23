@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/sendmail-service")
+@RequestMapping(value = "sendmail-service")
 public class MailController {
 
     @Autowired
@@ -36,6 +36,7 @@ public class MailController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoMail enviar(@RequestBody @Valid MailInput mailInput){
+        salvarCard(mailInput.getTitulo(), mailInput.getCorpo()); //TODO trocar por string
 
         return salvarNoBanco(mailInput);
 //        return mailConvertAssembler
@@ -50,7 +51,7 @@ public class MailController {
                         mailConvertDISAssembler.convert_paraEmailDomain(mailInput)
                 ));
 
-        salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
+//        salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
 
         return emailSalvo;
     }
@@ -63,7 +64,10 @@ public class MailController {
 
         if(tituloMinusculo.contains("trello") || corpoMinusculo.contains("trello")){
             CardInput cardInput = new CardInput(corpo, titulo);
-            proxy.criarAutomaticCard(cardInput);
+            System.out.println("CORPO: " + cardInput.getDescricao());
+            System.out.println("CORPO: " + cardInput.getTitulo());
+
+            proxy.criarAutomaticCard(corpo, titulo);
 
 //            var mailVar = mailSend; //TODO Implementar o Enviroment // receber o valor vindo do banco
 //

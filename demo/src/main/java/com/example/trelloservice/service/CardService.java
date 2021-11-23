@@ -1,6 +1,5 @@
 package com.example.trelloservice.service;
 
-import com.example.trelloservice.controller.input.CardInput;
 import com.example.trelloservice.exception.ServiceExceptionCard;
 import com.example.trelloservice.model.Card;
 import com.example.trelloservice.repository.CardRepository;

@@ -1,6 +1,8 @@
 package com.example.sendmail.trelloApiService.proxy;
 
 import com.example.sendmail.trelloApiService.model.CardInput;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public interface TrelloProxy {
 
     @PostMapping
-    public void criarAutomaticCard(/*@RequestBody*/ CardInput cardInput);
+    void criarAutomaticCard(@RequestBody String descricao, @RequestBody String titulo);
 
 
 }

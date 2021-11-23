@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/trello-service")
+@RequestMapping("trello-service")
 public class CardController {
 
     //TODO - handler
@@ -42,17 +42,18 @@ public class CardController {
         return cardConvertAssembler.toCollectionDTO(service.buscarTodos());
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public DtoCard criarCard(@RequestBody CardInput cardInput){
-        return cardConvertAssembler
-                .convert_para_DTO(service.save(
-                        cardConvertDISAssembler.convert_paraClienteDomain(cardInput)
-                ));
-    }
+//    @PostMapping("/criarCard")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public DtoCard criarCard(@RequestBody CardInput cardInput){
+//        return cardConvertAssembler
+//                .convert_para_DTO(service.save(
+//                        cardConvertDISAssembler.convert_paraClienteDomain(cardInput)
+//                ));
+//    }
 
     @PostMapping
-    public void criarAutomaticCard(@RequestBody CardInput cardInput){
+    public void criarAutomaticCard(String descricao, String titulo){
+        CardInput cardInput = new CardInput(descricao, titulo);
         service.saveAutomatic(cardConvertDISAssembler.convert_paraClienteDomain(cardInput));
     }
 
