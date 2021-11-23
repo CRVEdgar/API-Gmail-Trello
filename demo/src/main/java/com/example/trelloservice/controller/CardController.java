@@ -6,16 +6,14 @@ import com.example.trelloservice.controller.dto.DtoCard;
 import com.example.trelloservice.controller.input.CardInput;
 import com.example.trelloservice.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("trello-service") //TODO add /
+@RequestMapping("trello-service")
 public class CardController {
 
-    //TODO - handler
 
     @Autowired
     private CardService service;
@@ -42,22 +40,14 @@ public class CardController {
         return cardConvertAssembler.toCollectionDTO(service.buscarTodos());
     }
 
-//    @PostMapping("/criarCard")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public DtoCard criarCard(@RequestBody CardInput cardInput){
-//        return cardConvertAssembler
-//                .convert_para_DTO(service.save(
-//                        cardConvertDISAssembler.convert_paraClienteDomain(cardInput)
-//                ));
-//    }
 
     @PostMapping
     public void criarAutomaticCard(@RequestBody CardInput cardInput){
-        //CardInput cardInput = new CardInput(descricao, titulo);
+        System.out.println("NOVO EMAIL RECEBIDO: ");
         System.out.println("***** TITULO: " +cardInput.getTitulo());
         System.out.println("***** DESCRICAO: " +cardInput.getDescricao());
 
-        service.saveAutomatic(cardConvertDISAssembler.convert_paraClienteDomain(cardInput));
+        service.saveAutomatic(cardConvertDISAssembler.convert_paraCardDomain(cardInput));
     }
 
 }

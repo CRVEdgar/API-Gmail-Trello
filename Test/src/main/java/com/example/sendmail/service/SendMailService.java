@@ -26,7 +26,7 @@ public class SendMailService {
         try{
             enviarEmail(emailSalvo);
         } catch (UnsupportedEncodingException | MessagingException msgErro){
-            msgErro.printStackTrace(); //TODO substituir por handler
+            msgErro.printStackTrace();
         }
         return emailSalvo;
     }
@@ -37,7 +37,7 @@ public class SendMailService {
         factorMail.setHost("smtp.gmail.com");
         factorMail.setPort(587);
         factorMail.setUsername("crvedgartest@gmail.com");
-        factorMail.setPassword("pcpqzzntzuwndcpw"); // TODO senha real
+        factorMail.setPassword("pcpqzzntzuwndcpw");
 
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.auth", "true");
@@ -55,7 +55,8 @@ public class SendMailService {
         helper.setText(mail.getCorpo(), true);
 
         factorMail.send(message);
-        System.out.println("AMEM, EMAIL ENVIADO - VERIFICAR CX DE ENTRADA: \n " + mail.getCorpo());
-        //TODO inserir no logger
+
+        System.out.println("EMAIL ENVIADO - VERIFICAR CX DE ENTRADA: \n " + mail.getCorpo());
+
     }
 }

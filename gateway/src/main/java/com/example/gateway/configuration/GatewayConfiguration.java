@@ -11,33 +11,13 @@ public class GatewayConfiguration {
     @Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 
-//        return builder.routes()
-//                .route(p -> p.path("/get")
-//                        .filters(
-//                                f -> f.addRequestHeader("NomeCabecalho", "Valor")
-//                                        .addRequestParameter("Parametro", "Valor")
-//                        )
-//                        .uri("http://httpbin.org:80"))
-//                // caminhos de acesso ao loadbalance do Eureka
-//                .route(p -> p.path("/cambio-service/**")
-//                        .uri("lb://cambio-service")) // nome do serviço registrado no Eureka
-//                .route(p -> p.path("/book-service/**")
-//                        .uri("lb://book-service")) // nome do serviço registrado no Eureka
-//                .build();
-//    }
-
     return builder.routes()
-            .route(p -> p.path("/post") // intercepta o que passa na requisição do tipo especificado e redireciona para:
-//                .filters(
-//                    f -> f.addRequestHeader("NomeCabecalho", "Valor")
-//                            .addRequestParameter("Parametro", "Valor")
-//                        )
+            .route(p -> p.path("/post")
                 .uri("http://httpbin.org:80"))
-            // caminhos de acesso ao loadbalance do Eureka
-            .route(p -> p.path("/trello-service/**") //TODO - NOME DA APP
-                .uri("lb://trello-service")) // nome do serviço registrado no Eureka
-            .route(p -> p.path("/sendmail-service/**") // TODO - NOME DO APP
-                .uri("lb://sendmail-service")) // nome do serviço registrado no Eureka
+            .route(p -> p.path("/trello-service/**")
+                .uri("lb://trello-service"))
+            .route(p -> p.path("/sendmail-service/**")
+                .uri("lb://sendmail-service"))
             .build();
 }
 }

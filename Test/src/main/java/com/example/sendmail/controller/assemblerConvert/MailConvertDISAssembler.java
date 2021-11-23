@@ -16,7 +16,6 @@ public class MailConvertDISAssembler {
     @Autowired
     private ModelMapper modelMapper;
 
-    //recebe um objeto input e convert para um objeto do modelo de domínio
     public Mail convert_paraEmailDomain(MailInput mailInput){
         return modelMapper.map(mailInput, Mail.class);
     }

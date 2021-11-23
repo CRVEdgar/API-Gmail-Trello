@@ -16,12 +16,11 @@ public class CardConvertDISAssembler {
     @Autowired
     private ModelMapper modelMapper;
 
-    //recebe um objeto input e convert para um objeto do modelo de domínio
-    public Card convert_paraClienteDomain(CardInput cardInput){
+    public Card convert_paraCardDomain(CardInput cardInput){
         return modelMapper.map(cardInput, Card.class);
     }
 
-    public void copy_paraClienteDomain(CardInput cardInput, Card card){
+    public void copy_paraCardDomain(CardInput cardInput, Card card){
         modelMapper.map(cardInput, card);
     }
 }

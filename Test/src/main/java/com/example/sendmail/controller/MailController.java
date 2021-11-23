@@ -8,7 +8,6 @@ import com.example.sendmail.service.SendMailService;
 import com.example.sendmail.trelloApiService.model.CardInput;
 import com.example.sendmail.trelloApiService.proxy.TrelloProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,21 +27,12 @@ public class MailController {
     private MailConvertDISAssembler mailConvertDISAssembler;
 
     @Autowired
-    private Environment environment;
-
-    @Autowired
     private TrelloProxy proxy;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoMail enviar(@RequestBody @Valid MailInput mailInput){
-       // salvarCard(mailInput.getTitulo(), mailInput.getCorpo());
-
         return salvarNoBanco(mailInput);
-//        return mailConvertAssembler
-//                .convert_para_DTO(service.save(
-//                        mailConvertDISAssembler.convert_paraClienteDomain(mailInput)
-//                ));
     }
 
     private DtoMail salvarNoBanco(MailInput mailInput){
@@ -66,9 +56,6 @@ public class MailController {
             CardInput cardInput = new CardInput(corpo, titulo);
 
             proxy.criarAutomaticCard(cardInput);
-
-            System.out.println("CORPO: " + cardInput.getDescricao());
-            System.out.println("CORPO: " + cardInput.getTitulo());
 
         }
     }
