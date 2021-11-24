@@ -13,26 +13,11 @@ public class VerificadorCxEntrada {
     @Autowired
     private SendMailService service;
 
-    private final long ciclo_5_Min = 1*(1000 * 60);
-//    private static Integer qtdAnterior = 0;
-//    private static Integer qtdAtual = 0;
-//
-//    verificaPorHora(qtdAnterior, qtdAtual);
+    private final long ciclo_3_Min = 3*(1000 * 60);
 
-    @Scheduled(fixedDelay = ciclo_5_Min)
+    @Scheduled(fixedDelay = ciclo_3_Min)
     public void verificaPorHora() {
-//        if(!(qtdAnterior == 0 && qtdAtual == 0)){
-//            if(qtdAnterior == 0){
-//                qtdAnterior = service.quantidade();
-//                qtdAtual = service.quantidade();
-//            }else{
-//                qtdAtual = service.quantidade();
-//                if(qtdAtual>qtdAnterior){
-//                    qtdAnterior = qtdAtual;
-//                    System.out.println("QTD ANTERIOR: " + qtdAnterior);
-//                }
-//            }
-//        }
+
         System.out.println("***** MONITORANDO A CX DE ENTRADA *****");
         System.out.println("VERIFICAÇÃO FEITA EM: " + LocalDateTime.now());
         System.out.println("QUANTIDADE DE EMAILS NA CX DE ENTRADA: " + service.quantidade());
